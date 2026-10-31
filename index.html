@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>João Victor Bontorin — Engenharia de Software e Backend</title>
+<meta name="description" content="Estudante de Engenharia de Software, backend em Go. Projetos, experiência e contato.">
+<meta property="og:title" content="João Victor Bontorin — Backend em Go">
+<meta property="og:description" content="Projetos, experiência e contato.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#f4f7f6; --surface:#ffffff; --ink:#13201c; --muted:#53635e; --line:#d9e2df;
+  --accent:#0a7ea4; --accent-ink:#ffffff; --code-bg:#0f1a1d; --code-ink:#d6e7e4; --code-key:#6fd3ee; --code-str:#a8e0a0;
+  --head:"Bricolage Grotesque",system-ui,sans-serif; --body:"Instrument Sans",system-ui,sans-serif; --mono:"JetBrains Mono",ui-monospace,monospace;
+}
+:root[data-theme="dark"]{
+  --bg:#0c1315; --surface:#121c1f; --ink:#e6f0ed; --muted:#9bafaa; --line:#233035;
+  --accent:#4fc3e8; --accent-ink:#06151a; --code-bg:#070d0f;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 17px/1.65 var(--body);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+header{position:sticky;top:0;z-index:10;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font:700 18px var(--head);text-decoration:none}
+nav{display:flex;gap:22px;align-items:center}
+nav a{text-decoration:none;font-size:15px;color:var(--muted)}
+nav a:hover{color:var(--ink)}
+#theme{background:none;border:1px solid var(--line);color:var(--ink);border-radius:8px;padding:5px 10px;font:500 14px var(--body);cursor:pointer}
+.hero{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center;padding:88px 0 72px}
+h1{font:700 clamp(40px,6vw,64px)/1.04 var(--head);letter-spacing:-.02em;margin:0 0 20px}
+.lead{font-size:19px;color:var(--muted);max-width:52ch;margin:0 0 28px}
+.btns{display:flex;gap:12px;flex-wrap:wrap}
+.btn{display:inline-block;padding:11px 20px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;border:1px solid var(--line)}
+.btn.primary{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+.btn:hover{transform:translateY(-1px)}
+pre.api{margin:0;background:var(--code-bg);color:var(--code-ink);border-radius:14px;padding:22px;font:400 14px/1.7 var(--mono);overflow-x:auto;border:1px solid var(--line)}
+.api .c{color:#6b8a86}.api .k{color:var(--code-key)}.api .s{color:var(--code-str)}.api .m{color:#f2c879}
+section{padding:72px 0;border-top:1px solid var(--line)}
+h2{font:700 32px/1.15 var(--head);letter-spacing:-.01em;margin:0 0 28px}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.about p{margin:0 0 16px;color:var(--muted)}
+.photo{width:100%;max-width:340px;aspect-ratio:1;object-fit:cover;object-position:50% 30%;border-radius:16px;border:1px solid var(--line);display:block;margin-bottom:24px}
+.btn.wa{background:#1fa855;color:#fff;border-color:#1fa855}
+.stack{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+.chip{font:500 13px var(--mono);padding:4px 10px;border:1px solid var(--line);border-radius:999px;background:var(--surface)}
+.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:24px;display:flex;flex-direction:column;gap:12px}
+.card h3{font:700 21px var(--head);margin:0}
+.card p{margin:0;color:var(--muted);font-size:16px;flex:1}
+.card .stack{margin:0}
+.timeline{list-style:none;margin:0;padding:0;border-left:2px solid var(--line)}
+.timeline li{padding:0 0 28px 24px;position:relative}
+.timeline li::before{content:"";position:absolute;left:-7px;top:9px;width:12px;height:12px;border-radius:50%;background:var(--accent)}
+.timeline h3{font:700 18px var(--head);margin:0}
+.timeline .when{font:400 13px var(--mono);color:var(--muted)}
+.timeline p{margin:4px 0 0;color:var(--muted);font-size:16px}
+.contact p{color:var(--muted);max-width:52ch;margin:0 0 24px}
+footer{border-top:1px solid var(--line);padding:28px 0;color:var(--muted);font-size:14px}
+@media(max-width:820px){
+  .hero,.about,.projects{grid-template-columns:1fr}
+  .hero{padding:56px 0 48px;gap:32px}
+  nav a.hide{display:none}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+<header>
+  <div class="wrap">
+    <a class="logo" href="#top">João Bontorin</a>
+    <nav>
+      <a class="hide" href="#sobre">Sobre</a>
+      <a class="hide" href="#projetos">Projetos</a>
+      <a class="hide" href="#experiencia">Experiência</a>
+      <a href="#contato">Contato</a>
+      <button id="theme" type="button" aria-label="Alternar tema">Tema</button>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <div class="wrap hero">
+    <div>
+      <h1>João Victor Bontorin</h1>
+      <p class="lead">Estudante de Engenharia de Software que constrói APIs e sistemas backend em Go. Procuro estágio ou vaga júnior, inclusive em oportunidades internacionais.</p>
+      <div class="btns">
+        <a class="btn primary" href="#projetos">Ver projetos</a>
+        <a class="btn" href="https://github.com/VictorBontorin" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://www.linkedin.com/in/joao-victor-bontorin" target="_blank" rel="noopener">LinkedIn</a>
+      </div>
+    </div>
+<pre class="api" aria-label="Resumo em formato de resposta de API"><span class="m">GET</span> /joao
+<span class="c">// 200 OK</span>
+{
+  <span class="k">"nome"</span>: <span class="s">"João Victor Bontorin"</span>,
+  <span class="k">"curso"</span>: <span class="s">"Engenharia de Software"</span>,
+  <span class="k">"faculdade"</span>: <span class="s">"UniBrasil"</span>,
+  <span class="k">"foco"</span>: <span class="s">"backend"</span>,
+  <span class="k">"stack"</span>: [<span class="s">"Go"</span>, <span class="s">"PostgreSQL"</span>,
+            <span class="s">"Docker"</span>],
+  <span class="k">"local"</span>: <span class="s">"Colombo, PR"</span>,
+  <span class="k">"disponivel"</span>: <span class="m">true</span>
+}</pre>
+  </div>
+
+  <section id="sobre">
+    <div class="wrap about">
+      <div>
+        <img class="photo" src="foto.jpg" alt="Retrato de João Victor Bontorin" width="340" height="340" loading="lazy">
+        <h2>Sobre mim</h2>
+        <p>Curso Engenharia de Software na UniBrasil e vim do ensino técnico em Análise e Desenvolvimento de Sistemas. Gosto de backend: modelar dados, desenhar APIs e fazer sistemas continuarem corretos quando algo falha.</p>
+        <p>Estagiei com dados na CAIXA e hoje dou aulas de inglês na HeyPeppers!, o que me ajuda a explicar ideias técnicas com clareza e a trabalhar em equipes internacionais.</p>
+      </div>
+      <div>
+        <h2>Tecnologias</h2>
+        <div class="stack">
+          <span class="chip">Go</span><span class="chip">PostgreSQL</span><span class="chip">Docker</span>
+          <span class="chip">Python</span><span class="chip">Java</span><span class="chip">JavaScript</span>
+          <span class="chip">REST</span><span class="chip">SQS</span><span class="chip">Keycloak</span>
+          <span class="chip">Cloudflare Pages</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projetos">
+    <div class="wrap">
+      <h2>Projetos</h2>
+      <div class="projects">
+        <article class="card">
+          <h3>Wager Backend API</h3>
+          <p>Processamento distribuído de apostas com carteiras, ledger e padrão inbox/outbox, com filas SQS (LocalStack) e autenticação via Keycloak.</p>
+          <div class="stack"><span class="chip">Go</span><span class="chip">Uber Fx</span><span class="chip">PostgreSQL</span><span class="chip">SQS</span></div>
+        </article>
+        <article class="card">
+          <h3>REST API in Go</h3>
+          <p>API REST em Go com foco em estrutura de projeto limpa, acesso a banco e endpoints bem definidos.</p>
+          <div class="stack"><span class="chip">Go</span><span class="chip">REST</span><span class="chip">PostgreSQL</span></div>
+        </article>
+        <article class="card">
+          <h3>Xadrez multiplayer</h3>
+          <p>Jogo de xadrez online para duas pessoas, hospedado na Cloudflare.</p>
+          <div class="stack"><span class="chip">JavaScript</span><span class="chip">Cloudflare</span></div>
+        </article>
+        <article class="card">
+          <h3>Login OAuth com Google e GitHub</h3>
+          <p>Site estático com login social, sessão e armazenamento de usuários em banco D1, rodando no Cloudflare Pages.</p>
+          <div class="stack"><span class="chip">OAuth</span><span class="chip">Cloudflare D1</span><span class="chip">Pages</span></div>
+        </article>
+      </div>
+      <p style="margin-top:24px"><a href="https://github.com/VictorBontorin" target="_blank" rel="noopener">Ver todos os repositórios no GitHub</a></p>
+    </div>
+  </section>
+
+  <section id="experiencia">
+    <div class="wrap">
+      <h2>Experiência e formação</h2>
+      <ul class="timeline">
+        <li><span class="when">jan/2026 – atual</span><h3>Professor de inglês, HeyPeppers!</h3><p>Aulas de inglês e comunicação com alunos de diferentes níveis.</p></li>
+        <li><span class="when">fev/2026 – dez/2029</span><h3>Bacharelado em Engenharia de Software, UniBrasil</h3></li>
+        <li><span class="when">fev/2024 – ago/2025</span><h3>Estagiário de dados, CAIXA</h3></li>
+        <li><span class="when">2023 – 2025</span><h3>Técnico em Análise e Desenvolvimento de Sistemas</h3></li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="contato" class="contact">
+    <div class="wrap">
+      <h2>Contato</h2>
+      <p>Estou buscando estágio ou vaga júnior em engenharia de software e backend. Me chame pelo WhatsApp ou LinkedIn, ou veja meu código no GitHub.</p>
+      <div class="btns">
+        <a class="btn wa" href="https://wa.me/5541999999999?text=Ol%C3%A1%20Jo%C3%A3o%2C%20vi%20seu%20portf%C3%B3lio!" target="_blank" rel="noopener">Chamar no WhatsApp</a>
+        <a class="btn primary" href="https://www.linkedin.com/in/joao-victor-bontorin" target="_blank" rel="noopener">Falar no LinkedIn</a>
+        <a class="btn" href="https://github.com/VictorBontorin" target="_blank" rel="noopener">Abrir GitHub</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">© <span id="y"></span> João Victor Bontorin. Colombo, Paraná.</div>
+</footer>
+
+<script>
+document.getElementById("y").textContent = new Date().getFullYear();
+(function(){
+  var root = document.documentElement, btn = document.getElementById("theme");
+  var saved = null;
+  try { saved = localStorage.getItem("theme"); } catch(e) {}
+  var dark = saved ? saved === "dark" : window.matchMedia("(prefers-color-scheme: dark)").matches;
+  root.dataset.theme = dark ? "dark" : "light";
+  btn.addEventListener("click", function(){
+    var next = root.dataset.theme === "dark" ? "light" : "dark";
+    root.dataset.theme = next;
+    try { localStorage.setItem("theme", next); } catch(e) {}
+  });
+})();
+</script>
+</body>
+</html>
